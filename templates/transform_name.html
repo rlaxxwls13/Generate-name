@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Consonant</title>
+</head>
+<body>
+    <h1>Consonant Changer</h1>
+    <input type="text" id="conInput" placeholder="Enter a word">
+    <button onclick="changeConsonant()">Change Consonant</button>
+    <div id="conResult"></div>
+
+    <h1>Vowel Changer</h1>
+    <input type="text" id="vowInput" placeholder="Enter a word">
+    <button onclick="changeVowel()">Change Vowel</button>
+    <div id="vowResult"></div>
+
+    <h1>Abbreviation Maker</h1>
+    <input type="text" id="abbInput" placeholder="Enter a word">
+    <button onclick="makeAbbreviation()">Make Abbreviation</button>
+    <div id="abbResult"></div>
+
+    <script>
+        async function changeConsonant() {
+            const wordInput = document.getElementById('conInput').value;
+            const resultDiv = document.getElementById('conResult');
+
+            if (!wordInput.trim()) {
+                resultDiv.innerHTML = '<p>Please enter a word.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch('/change_consonant', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ word: wordInput })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultDiv.innerHTML = '<p>Changed word: ' + data.changed_word + '</p>';
+                } else {
+                    resultDiv.innerHTML = '<p>Error: ' + data.error + '</p>';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = '<p>Error: ' + error.message + '</p>';
+            }
+        }
+
+        async function changeVowel() {
+            const wordInput = document.getElementById('vowInput').value;
+            const resultDiv = document.getElementById('vowResult');
+
+            if (!wordInput.trim()) {
+                resultDiv.innerHTML = '<p>Please enter a word.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch('/change_vowel', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ word: wordInput })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultDiv.innerHTML = '<p>Changed word: ' + data.changed_word + '</p>';
+                } else {
+                    resultDiv.innerHTML = '<p>Error: ' + data.error + '</p>';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = '<p>Error: ' + error.message + '</p>';
+            }
+        }
+
+        async function makeAbbreviation() {
+            const wordInput = document.getElementById('abbInput').value;
+            const resultDiv = document.getElementById('abbResult');
+
+            if (!wordInput.trim()) {
+                resultDiv.innerHTML = '<p>Please enter a word.</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch('/make_abbreviation', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ word: wordInput })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    resultDiv.innerHTML = '<p>Changed word: ' + data.changed_word + '</p>';
+                } else {
+                    resultDiv.innerHTML = '<p>Error: ' + data.error + '</p>';
+                }
+            } catch (error) {
+                resultDiv.innerHTML = '<p>Error: ' + error.message + '</p>';
+            }
+        }
+    </script>
+</body>
+</html>
