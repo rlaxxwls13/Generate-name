@@ -1,8 +1,10 @@
 import imp
 from select import select
 from flask import Flask, render_template, request, jsonify
+from abbreviation_maker import make_abbreviation
 from name_generater import generate_name
 from consonant_changer import change_consonant
+from vowel_changer import change_vowel
 
 app = Flask(__name__)
 
@@ -40,30 +42,9 @@ def submit():
     return jsonify({'generated_name': response}), 200
 
 
-"""
-@app.route('/gn')
-def gn_form():
-    return render_template('gn_form.html')
-
-
-
-@app.route('/generate_name', methods=['POST'])
-def generate_response():
-    data = request.get_json()
-    word = data.get('word')
-
-    if not word:
-        return jsonify({'error': '단어를 입력하세요'}), 400
-
-    response = generate_name(word)
-
-    return jsonify({'generated_name': response}), 200
-"""
-
-
 @app.route('/cc')
 def form():
-    return render_template('change_consonant.html')
+    return render_template('transform_word.html')
 
 
 @app.route('/change_consonant', methods=['POST'])
@@ -76,6 +57,32 @@ def handle_change_consonant():
 
     # 변경된 단어 가져오기
     changed_word = change_consonant(word)
+
+    return jsonify({'changed_word': changed_word}), 200
+
+
+@app.route('/change_vowel', methods=['POST'])
+def handle_change_vowel():
+    data = request.get_json()
+    word = data.get('word')
+
+    if not word:
+        return jsonify({'error': '단어를 입력하세요'}), 400
+
+    changed_word = change_vowel(word)
+
+    return jsonify({'changed_word': changed_word}), 200
+
+
+@app.route('/make_abbreviation', methods=['POST'])
+def handle_make_abbreviation():
+    data = request.get_json()
+    word = data.get('word')
+
+    if not word:
+        return jsonify({'error': '단어를 입력하세요'}), 400
+
+    changed_word = make_abbreviation(word)
 
     return jsonify({'changed_word': changed_word}), 200
 
