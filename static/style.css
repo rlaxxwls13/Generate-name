@@ -1,0 +1,578 @@
+:root {
+  --breakpoint-xs: 0;
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --btn-bg-color: #ffffff; /* 기본 버튼 배경색 */
+  --btn-hover-bg-color: #e0e0e0; /* 버튼 호버 시 배경색 */
+  --btn-text-color: #000000; /* 기본 버튼 텍스트 색상 */
+  --btn-hover-text-color: #606060; /* 버튼 호버 시 텍스트 색상 */
+  --btn-selected-bg-color: #d0ddc3; /* 선택된 상태의 버튼 배경색 */
+  --btn-selected-text-color: #7db249; /* 선택된 상태의 버튼 텍스트 색상 */
+  --btn-border-color: #a6a6a6; /* 기본 버튼 테두리 색상 */
+  --btn-selected-border-color: #7db249; /* 선택된 버튼 테두리 색상 */
+}
+
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+  padding-top: 75px;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+.highlight {
+  color: #7db249; /* 원하는 색상 코드로 변경 */
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  row-gap: 24px;
+  column-gap: 24px;
+  padding-top: 32px;
+  padding-right: 0px;
+  padding-bottom: 24px;
+  padding-left: 0px;
+  align-items: center;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block;
+}
+
+hr {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 2;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.btn1 {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  row-gap: 8px;
+  column-gap: 8px;
+}
+
+.btn2 {
+  display: flex;
+  height: 44px;
+  padding-top: 0px;
+  padding-right: 12px;
+  justify-content: center;
+  align-items: center;
+  row-gap: 4px;
+  column-gap: 4px;
+  border: none;
+  /*border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  border-bottom-left-radius: 999px;*/
+  border-radius: 999px;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: var(--btn-bg-color); /* 버튼 배경색 */
+  color: var(--btn-text-color); /* 버튼 텍스트 색상 */
+  padding: 0 12px; /* 상하 0, 좌우 12px 패딩 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  border: 1px solid var(--btn-border-color); /* 기본 테두리 색상 */
+}
+
+.btn2:hover {
+  background-color: var(--btn-hover-bg-color); /* 호버 시 버튼 배경색 */
+  color: var(--btn-hover-text-color); /* 호버 시 버튼 텍스트 색상 */
+  border-color: var(--btn-selected-border-color);
+  background-color: var(
+    --btn-selected-bg-color
+  ); /* 선택된 상태의 버튼 배경색 */
+}
+
+.btn2.selected {
+  background-color: var(
+    --btn-selected-bg-color
+  ); /* 선택된 상태의 버튼 배경색 */
+  color: var(--btn-selected-text-color); /* 선택된 상태의 버튼 텍스트 색상 */
+
+  border: 1px solid var(--btn-selected-border-color);
+  box-shadow: 0 0 0 1.5px var(--btn-selected-border-color);
+}
+
+.btn2.selected .btn3 {
+  font-weight: bold; /* 선택된 상태에서 btn3 글씨체 굵기 */
+}
+
+.btn3 {
+  color: var(--text-primary, #111);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.14px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+#seedWordsContainer {
+  display: flex;
+  flex-wrap: wrap; /* 버튼들이 너무 많아지면 다음 줄로 넘어갈 수 있게 설정 */
+  gap: 10px; /* 버튼 사이의 간격 조정 */
+  margin-bottom: 20px; /* 밑에 여유 공간 추가 */
+}
+
+.body1 {
+  height: auto;
+  display: flex;
+  width: 100%;
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  overflow-x: hidden;
+}
+
+.body2 {
+  width: 100%;
+  max-width: 1164px;
+  display: flex;
+  padding-left: 15px;
+  padding-bottom: 80px;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 48px;
+  column-gap: 48px;
+  margin: 0 auto;
+}
+
+.body3 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+  padding-left: 25px;
+  padding-right: 25px;
+  border-radius: 10px;
+  border: 1px solid rgb(216, 216, 216);
+}
+
+.body4 {
+  display: flex;
+  height: 44px;
+  max-width: 240px;
+  width: 100%;
+  padding-top: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  justify-content: center;
+  align-items: center;
+  row-gap: 4px;
+  column-gap: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 75px;
+  padding: 1rem;
+  color: #000000c9;
+  font-weight: bold;
+  display: flex;
+  background: white;
+  border-bottom: 1px solid rgb(216, 216, 216);
+  align-items: center;
+}
+
+header nav span {
+  padding-left: 2em;
+}
+
+header nav a {
+  color: inherit;
+  text-decoration: none;
+  font-size: 1rem;
+  font-family: "Nanum Gothic", sans-serif;
+}
+
+.logo {
+  width: 170px; /* 로고 이미지의 너비를 설정 */
+  height: auto; /* 높이는 자동으로 조정 */
+  margin-right: 5px; /* 이미지와 텍스트 사이의 간격 설정 */
+}
+
+.logoname {
+  width: 350px; /* 로고 이미지의 너비를 설정 */
+  height: auto; /* 높이는 자동으로 조정 */
+}
+
+.logoname2 {
+  width: 110px; /* 로고 이미지의 너비를 설정 */
+  height: auto; /* 높이는 자동으로 조정 */
+  margin-left: 110px; /* 이미지와 텍스트 사이의 간격 설정 */
+}
+
+.box1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 24px;
+  column-gap: 24px;
+  align-self: stretch;
+  margin-bottom: 60px; /* box3 아래 마진을 늘림 */
+}
+
+.box2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 8px;
+  column-gap: 8px;
+  align-self: stretch;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  font-style: normal;
+}
+
+.box3 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 24px;
+  column-gap: 24px;
+  align-self: stretch;
+  margin-bottom: 40px; /* box3 아래 마진을 늘림 */
+}
+
+.input1 {
+  display: flex;
+  height: 44px;
+  padding-top: 8px;
+  padding-right: 16px;
+  justify-content: center;
+  align-items: center;
+  row-gap: 4px;
+  column-gap: 4px;
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  border-bottom-left-radius: 999px;
+  border-color: var(--chakra-colors-chakra-border-color);
+}
+
+.input2 {
+  color: rgb(17, 17, 17);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  font-family: "Do Hyeon", sans-serif;
+}
+
+.input3 {
+  background-color: transparent;
+  width: 80px;
+  outline-style: none;
+  color: rgb(137, 137, 137);
+  font-family: Pretendard;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border: 2px solid #a6a6a6;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #ff0000; /* 체크박스 색상 */
+}
+
+.checkbox-container label {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.bbtn1 {
+  width: 90%;
+  max-width: 320px;
+  padding-top: 0px;
+  display: flex;
+  height: 55px;
+  padding-right: 24px;
+  justify-content: center;
+  align-items: center;
+  row-gap: 4px;
+  column-gap: 4px;
+  padding: 0 12px; /* 상하 , 좌우 12px 패딩 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  border: none;
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  border-bottom-left-radius: 999px;
+  background-color: var(--btn-bg-color); /* 버튼 배경색 */
+  border: 1.5px solid var(--btn-border-color); /* 기본 테두리 색상 */
+}
+
+.bbtn1:hover {
+  background-color: var(--btn-hover-bg-color); /* 호버 시 버튼 배경색 */
+  color: var(--btn-hover-text-color); /* 호버 시 버튼 텍스트 색상 */
+  border-color: var(--btn-selected-border-color);
+  background-color: var(
+    --btn-selected-bg-color
+  ); /* 선택된 상태의 버튼 배경색 */
+}
+
+.bbtn2 {
+  text-align: center;
+  font-family: Pretendard;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 140%;
+  letter-spacing: -0.14px;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  margin-top: 15px; /* 텍스트를 10px 아래로 내림 */
+}
+
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: auto; /* Adjusts width based on content */
+  max-width: 80%; /* Maximum width */
+  min-width: 300px; /* Minimum width */
+  height: auto; /* Adjusts height based on content */
+  max-height: 80%; /* Maximum height */
+  min-height: 150px; /* Minimum height */
+  overflow: auto; /* Adds scrollbars if content overflows */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.highlight {
+  color: #7db249; /* 원하는 색상 코드로 변경 */
+}
+
+.tninput {
+  height: 30px;
+}
+
+.tnb {
+  text-align: center;
+
+  max-width: 200px;
+  padding-top: 0px;
+
+  height: 35px;
+  padding-right: 24px;
+  row-gap: 4px;
+  column-gap: 4px;
+  padding: 0 12px; /* 상하 , 좌우 12px 패딩 */
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  border: none;
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  border-bottom-left-radius: 999px;
+  background-color: var(--btn-bg-color); /* 버튼 배경색 */
+  border: 1.5px solid var(--btn-border-color); /* 기본 테두리 색상 */
+}
+
+.tnb:hover {
+  background-color: var(--btn-hover-bg-color); /* 호버 시 버튼 배경색 */
+  color: var(--btn-hover-text-color); /* 호버 시 버튼 텍스트 색상 */
+  border-color: var(--btn-selected-border-color);
+  background-color: var(
+    --btn-selected-bg-color
+  ); /* 선택된 상태의 버튼 배경색 */
+}
+
+.shadow-container {
+  background-color: #fff; /* 본문 배경 색상 */
+  border: 1px solid rgb(216, 216, 216);
+  margin: 20px auto; /* 상하 20px, 좌우 자동으로 가운데 정렬 */
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%; /* 전체 너비의 80%로 설정 */
+  max-width: 1200px; /* 최대 너비를 1200px로 설정 */
+  padding-bottom: 80px;
+  text-align: center;
+}
+
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.popup-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: auto; /* Adjusts width based on content */
+  max-width: 80%; /* Maximum width */
+  min-width: 300px; /* Minimum width */
+  text-align: center; /* Center the text */
+}
+
+#tfbtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.input-btn-style {
+  height: 44px;
+  width: 90%;
+  max-width: 120px;
+  display: inline-block;
+  padding: 10px 20px;
+  margin: 5px;
+  border: none;
+  border-radius: 999px;
+  background-color: #f0f0f0;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:100);
+
+#loading {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(175, 175, 175, 0.445);
+  border-radius: 50%;
+  border-top-color: #7db249;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
