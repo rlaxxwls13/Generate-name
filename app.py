@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, jsonify
 from abbreviation_maker import make_abbreviation
 from name_generater import generate_name
 from consonant_changer import change_consonant
+from seed_word import seedword
 from vowel_changer import change_vowel
 
 app = Flask(__name__)
@@ -11,7 +12,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+    return render_template('generate_name.html')
 
 
 @app.route('/gn')
@@ -21,13 +22,14 @@ def test():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    selected_sectors = request.form.getlist('sector')
-    selected_brandValues = request.form.getlist('brandValue')
-    selected_trends = request.form.getlist('trend')
-    selected_seedWords = request.form.getlist('seedWord')
-    selected_targets = request.form.getlist('target')
-    selected_languageStyles = request.form.getlist('languageStyle')
-    selected_levels = request.form.getlist('level')
+    data = request.get_json()
+    selected_sectors = data.get('sector', [])
+    selected_brandValues = data.get('brandValue', [])
+    selected_trends = data.get('trend', [])
+    selected_seedWords = data.get('seedWord', [])
+    selected_targets = data.get('target', [])
+    selected_languageStyles = data.get('languageStyle', [])
+    selected_levels = data.get('level', [])
 
     result = f"업종-{' '.join(selected_sectors)}, \
         브랜드가치-{' '.join(selected_brandValues)}, \
@@ -44,7 +46,7 @@ def submit():
 
 @app.route('/cc')
 def form():
-    return render_template('transform_word.html')
+    return render_template('transform_name.html')
 
 
 @app.route('/change_consonant', methods=['POST'])
@@ -83,6 +85,19 @@ def handle_make_abbreviation():
         return jsonify({'error': '단어를 입력하세요'}), 400
 
     changed_word = make_abbreviation(word)
+
+    return jsonify({'changed_word': changed_word}), 200
+
+
+@app.route('/seedword', methods=['POST'])
+def handle_seedword():
+    data = request.get_json()
+    seed_word = data.get('word')
+
+    if not seed_word:
+        return jsonify({'error': '단어를 입력하세요'}), 400
+
+    changed_word = seedword(seed_word)
 
     return jsonify({'changed_word': changed_word}), 200
 
