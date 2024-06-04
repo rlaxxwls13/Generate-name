@@ -3,23 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Consonant</title>
+    <title>이르밍</title>
+    <link rel="stylesheet" href="../static/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gothic+A1:wght@100;200&family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Consonant Changer</h1>
-    <input type="text" id="conInput" placeholder="Enter a word">
-    <button onclick="changeConsonant()">Change Consonant</button>
-    <div id="conResult"></div>
+    <div>
+        <header>
+            <a href="/gn"><img src="{{ url_for('static', filename='name2.png') }}" alt="로고" class="logoname2"></a>
+            <nav>
+                <span><a href="/gn">이름 생성하기</a></span>
+                <span><a href="/cc">이름 변형하기</a></span>
+            </nav>
+        </header>
+    </div>
 
-    <h1>Vowel Changer</h1>
-    <input type="text" id="vowInput" placeholder="Enter a word">
-    <button onclick="changeVowel()">Change Vowel</button>
-    <div id="vowResult"></div>
+    <div class = body1>
+        <img src="{{ url_for('static', filename='llogo.png') }}" alt="로고" class="logo">
 
-    <h1>Abbreviation Maker</h1>
-    <input type="text" id="abbInput" placeholder="Enter a word">
-    <button onclick="makeAbbreviation()">Make Abbreviation</button>
-    <div id="abbResult"></div>
+        <img src="{{ url_for('static', filename='name1.png') }}" alt="로고" class="logoname">
+    </div>
+
+    <div class = shadow-container>
+        <h1><span class="highlight">자음</span> 변경기</h1>
+        <input type="text" id="conInput" class="tninput" placeholder="Enter a word">
+        <button class="tnb" onclick="changeConsonant()">자음 바꾸기</button>
+        <div id="conResult"></div>
+
+        <h1><span class="highlight">모음</span> 변경기</h1>
+        <input type="text" id="vowInput" class="tninput" placeholder="Enter a word">
+        <button class="tnb" onclick="changeVowel()">모음 바꾸기</button>
+        <div id="vowResult"></div>
+
+        <h1><span class="highlight">축약</span> 생성기</h1>
+        <input type="text" id="abbInput" class="tninput" placeholder="Enter a word">
+        <button class="tnb" onclick="makeAbbreviation()">축약 생성하기</button>
+        <div id="abbResult"></div>
+    </div>
 
     <script>
         async function changeConsonant() {
@@ -43,7 +66,7 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    resultDiv.innerHTML = '<p>Changed word: ' + data.changed_word + '</p>';
+                    resultDiv.innerHTML = data.changed_word
                 } else {
                     resultDiv.innerHTML = '<p>Error: ' + data.error + '</p>';
                 }
@@ -73,7 +96,7 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    resultDiv.innerHTML = '<p>Changed word: ' + data.changed_word + '</p>';
+                    resultDiv.innerHTML = data.changed_word
                 } else {
                     resultDiv.innerHTML = '<p>Error: ' + data.error + '</p>';
                 }
@@ -103,7 +126,7 @@
                 const data = await response.json();
 
                 if (response.ok) {
-                    resultDiv.innerHTML = '<p>Changed word: ' + data.changed_word + '</p>';
+                    resultDiv.innerHTML = data.changed_word
                 } else {
                     resultDiv.innerHTML = '<p>Error: ' + data.error + '</p>';
                 }
