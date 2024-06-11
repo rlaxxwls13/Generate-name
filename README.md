@@ -3,6 +3,7 @@
 ## Flask를 이용해 서버 개발
 
 1. 메인페이지
-![image](https://github.com/rlaxxwls13/Generate-name/assets/101396454/f4a2fcf5-9377-496c-9a8c-6737b06d71b5)
+<img width="1280" alt="image" src="https://github.com/rlaxxwls13/Generate-name/assets/101396454/a242f32b-5e18-42b0-aa99-f890fe94e96f">
+
 
 추후 수정
